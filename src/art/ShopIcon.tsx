@@ -1,0 +1,23 @@
+const S = '#1f2a44'
+
+/** Blocky icons for the home shop / room. Wallpapers use CSS backgrounds instead. */
+export function ShopIcon({ id, size = 56 }: { id: string; size?: number }) {
+  const sw = { stroke: S, strokeWidth: 2, strokeLinejoin: 'round' as const }
+  return (
+    <svg viewBox="0 0 48 48" width={size} height={size} aria-hidden="true">
+      {id === 'sofa' && <g {...sw}><rect x="6" y="14" width="36" height="16" rx="5" fill="#ff8f6b" /><rect x="2" y="22" width="10" height="16" rx="4" fill="#f4724a" /><rect x="36" y="22" width="10" height="16" rx="4" fill="#f4724a" /><rect x="10" y="26" width="28" height="12" rx="3" fill="#ffa987" /></g>}
+      {id === 'table' && <g {...sw}><rect x="4" y="16" width="40" height="8" rx="3" fill="#d9a066" /><rect x="8" y="24" width="6" height="18" fill="#b07a40" /><rect x="34" y="24" width="6" height="18" fill="#b07a40" /></g>}
+      {id === 'shelf' && <g {...sw}><rect x="6" y="4" width="36" height="40" rx="3" fill="#c98f55" /><rect x="10" y="8" width="28" height="14" fill="#8a5d2b" /><rect x="10" y="26" width="28" height="14" fill="#8a5d2b" /><rect x="12" y="11" width="5" height="11" fill="#4d8dff" stroke="none" /><rect x="19" y="13" width="5" height="9" fill="#ff6b6b" stroke="none" /><rect x="26" y="10" width="5" height="12" fill="#51cf66" stroke="none" /><rect x="14" y="30" width="8" height="10" fill="#ffd43b" stroke="none" /><rect x="26" y="32" width="8" height="8" fill="#ff8ad1" stroke="none" /></g>}
+      {id === 'lamp' && <g {...sw}><polygon points="12,6 36,6 40,22 8,22" fill="#ffe27a" /><rect x="22" y="22" width="4" height="16" fill="#8a8fa8" /><rect x="14" y="38" width="20" height="6" rx="2" fill="#6b7090" /></g>}
+      {id === 'cactus' && <g {...sw}><rect x="19" y="8" width="12" height="28" rx="6" fill="#51cf66" /><rect x="8" y="16" width="8" height="12" rx="4" fill="#40c057" /><rect x="34" y="12" width="8" height="12" rx="4" fill="#40c057" /><rect x="12" y="34" width="26" height="10" rx="3" fill="#e07a4f" /><rect x="22" y="14" width="3" height="3" fill="#ff8ad1" stroke="none" /></g>}
+      {id === 'flowerpot' && <g {...sw}><rect x="22" y="18" width="4" height="16" fill="#37b24d" stroke="none" /><rect x="18" y="6" width="12" height="12" fill="#ff8ad1" /><rect x="21" y="9" width="6" height="6" fill="#ffd43b" stroke="none" /><rect x="10" y="26" width="10" height="6" fill="#51cf66" /><polygon points="12,32 36,32 32,45 16,45" fill="#e07a4f" /></g>}
+      {id === 'tree' && <g {...sw}><rect x="21" y="28" width="7" height="16" fill="#8a5d2b" /><rect x="8" y="6" width="32" height="26" rx="8" fill="#51cf66" /><rect x="14" y="12" width="6" height="6" fill="#8ce99a" stroke="none" /><rect x="28" y="20" width="6" height="6" fill="#8ce99a" stroke="none" /></g>}
+      {id === 'bed-round' && <g {...sw}><rect x="4" y="22" width="40" height="20" rx="10" fill="#ff8ad1" /><rect x="10" y="26" width="28" height="10" rx="5" fill="#ffc2e8" /></g>}
+      {id === 'bed-cushion' && <g {...sw}><rect x="4" y="20" width="40" height="22" rx="6" fill="#74c0fc" /><rect x="8" y="24" width="32" height="6" rx="3" fill="#a5d8ff" stroke="none" /><rect x="6" y="40" width="5" height="5" fill="#ffd43b" /><rect x="37" y="40" width="5" height="5" fill="#ffd43b" /></g>}
+      {id === 'balloon' && <g {...sw}><rect x="8" y="4" width="16" height="20" rx="8" fill="#ff6b6b" /><rect x="24" y="8" width="16" height="20" rx="8" fill="#4d8dff" /><path d="M16 24 L26 44 M32 28 L26 44" fill="none" /></g>}
+      {id === 'rug' && <g {...sw}><rect x="2" y="20" width="44" height="22" rx="6" fill="#ff6b6b" /><rect x="7" y="24" width="34" height="14" rx="4" fill="#ffd43b" stroke="none" /><rect x="12" y="27" width="24" height="8" rx="3" fill="#51cf66" stroke="none" /><rect x="17" y="29" width="14" height="4" rx="2" fill="#4d8dff" stroke="none" /></g>}
+      {id === 'trophy' && <g {...sw}><rect x="12" y="6" width="24" height="18" rx="5" fill="#ffc928" /><rect x="4" y="9" width="8" height="9" rx="3" fill="none" /><rect x="36" y="9" width="8" height="9" rx="3" fill="none" /><rect x="21" y="24" width="6" height="10" fill="#e0a400" /><rect x="12" y="34" width="24" height="8" rx="3" fill="#8a5d2b" /></g>}
+      {id === 'poster' && <g {...sw}><rect x="8" y="4" width="32" height="40" rx="3" fill="#fff" /><rect x="12" y="8" width="24" height="18" fill="#74c0fc" stroke="none" /><rect x="14" y="18" width="10" height="8" fill="#51cf66" stroke="none" /><rect x="26" y="12" width="6" height="6" fill="#ffd43b" stroke="none" /><rect x="12" y="30" width="24" height="3" fill="#ced4da" stroke="none" /><rect x="12" y="36" width="16" height="3" fill="#ced4da" stroke="none" /></g>}
+    </svg>
+  )
+}

@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Nunito", ui-rounded, "Trebuchet MS", system-ui, sans-serif;
+  --font-display: "Baloo 2", "Nunito", ui-rounded, system-ui, sans-serif;
+}
+
+:root {
+  --ink: #1f2a44;
+  --card: #ffffff;
+  --card2: #eef7ff;
+  --line: #1f2a44;
+  --sky: linear-gradient(#8fd9ff, #d9f3ff 70%, #e9fbd9);
+  --scan: #ff6a00;
+  --amp: 1;
+}
+[data-contrast='high'] {
+  --ink: #000;
+  --card: #fff;
+  --card2: #fff;
+  --sky: #fff;
+  --scan: #d6006f;
+}
+html { font-size: 16px; }
+html[data-text='large'] { font-size: 19px; }
+html[data-text='xl'] { font-size: 22px; }
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--sky);
+  background-attachment: fixed;
+}
+h1, h2, h3 { font-family: var(--font-display); font-weight: 800; line-height: 1.1; }
+
+/* Big, chunky, Roblox-ish buttons. 3D "press" is a border, not motion-dependent. */
+.btn {
+  --c: #4ade80;
+  display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+  min-height: 4rem; min-width: 4rem; padding: .6rem 1.4rem;
+  font: 800 1.25rem/1.1 var(--font-display);
+  color: #10223a; background: var(--c);
+  border: 3px solid var(--line); border-bottom-width: 8px; border-radius: 1.25rem;
+  cursor: pointer; user-select: none; touch-action: manipulation;
+  transition: transform .12s ease;
+}
+.btn:hover:not(:disabled) { filter: brightness(1.05); }
+.btn:active:not(:disabled) { transform: translateY(4px); border-bottom-width: 4px; }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn-blue { --c: #74b9ff; } .btn-yellow { --c: #ffd43b; } .btn-pink { --c: #ff9ad5; }
+.btn-purple { --c: #c4a3ff; } .btn-orange { --c: #ffa94d; } .btn-white { --c: #fff; }
+.btn-lg { min-height: 5rem; font-size: 1.6rem; padding: .8rem 2rem; }
+.btn-xl { min-height: 6.5rem; font-size: 2.4rem; min-width: 6.5rem; }
+.btn[aria-pressed='true'], .btn.chosen { outline: 5px solid var(--ink); outline-offset: 2px; }
+
+.card {
+  background: var(--card); border: 3px solid var(--line); border-radius: 1.5rem;
+  box-shadow: 0 6px 0 rgb(31 42 68 / .25);
+}
+
+/* focus + single-switch scanning highlights: thick, steady (never flashing) */
+:focus-visible, .scan-on { outline: 6px solid var(--scan) !important; outline-offset: 3px; box-shadow: 0 0 0 10px #fff, 0 0 0 14px var(--ink); z-index: 5; position: relative; }
+
+/* ---------- gentle animations (all scaled by --amp, all off in reduced motion) ---------- */
+@keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(calc(var(--amp) * -5px)); } }
+@keyframes wiggle { 0%,100% { transform: rotate(0); } 50% { transform: rotate(calc(var(--amp) * 3deg)); } }
+@keyframes pop { 0% { transform: scale(calc(1 - var(--amp) * .25)); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+@keyframes drift { 0% { transform: translateX(-10%); } 100% { transform: translateX(10%); } }
+@keyframes blink { 0%, 94%, 100% { transform: scaleY(1); } 97% { transform: scaleY(.1); } }
+@keyframes floatup { 0% { transform: translateY(0); opacity: 0; } 20% { opacity: 1; } 100% { transform: translateY(calc(var(--amp) * -40px)); opacity: 0; } }
+
+.bob { animation: bob 3.2s ease-in-out infinite; }
+.pop { animation: pop .4s ease-out both; }
+.wiggle { animation: wiggle 2.4s ease-in-out infinite; transform-origin: 50% 90%; }
+.cloud { position: absolute; width: 7rem; opacity: .9; animation: drift 14s ease-in-out infinite alternate; }
+.pet-idle { animation: bob 2.6s ease-in-out infinite; }
+.pet-blink { transform-box: fill-box; transform-origin: center; animation: blink 4.5s infinite; }
+.pet-wing { transform-box: fill-box; transform-origin: center; animation: wiggle 2s ease-in-out infinite; }
+.coin-float { animation: floatup 2.2s ease-out both; }
+.sparkle { animation: pop .6s ease-out both; }
+
+html[data-motion='off'] *, html[data-motion='off'] *::before, html[data-motion='off'] *::after {
+  animation: none !important; transition: none !important; scroll-behavior: auto !important;
+}
+
+/* ---------- visuals ---------- */
+.grp { background: #fff; border: 3px solid var(--line); border-radius: 1rem; padding: .35rem; display: flex; flex-direction: column; align-items: center; gap: .15rem; }
+.grp.dim { opacity: .35; }
+.grp.on { background: #fff6c8; }
+.dotgrid { display: grid; gap: 2px; justify-items: center; }
